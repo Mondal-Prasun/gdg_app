@@ -26,8 +26,8 @@ class DrawerWidget extends StatelessWidget {
                 // style: ListTileStyle.drawer,
               ),
               ListTile(
-                title: const Text('Resources'),
-                leading: const Icon(Icons.read_more),
+                title: const Text('Contact Us'),
+                leading: const Icon(Icons.support),
                 onTap: () {},
                 // style: ListTileStyle.drawer,
               ),

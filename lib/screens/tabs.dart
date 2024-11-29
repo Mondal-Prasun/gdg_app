@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gdg_app/screens/contactus_screen.dart';
+import 'package:gdg_app/screens/faq_screen.dart';
 import 'package:gdg_app/screens/home_screen.dart';
-import 'package:gdg_app/screens/scheduel_screen.dart';
-import 'package:gdg_app/screens/speaker_screen.dart';
+import 'package:gdg_app/screens/event_screen.dart';
+import 'package:gdg_app/screens/resources_screen.dart';
 import 'package:gdg_app/screens/teams_screen.dart';
 import 'package:gdg_app/widgets/drawer_widget.dart';
 
@@ -28,11 +28,11 @@ class _TabsState extends State<Tabs> {
         break;
       case 1:
         bottomNavigationBarIndex = 1;
-        currentScreen = const ScheduleScreen();
+        currentScreen = const EventScreen();
         break;
       case 2:
         bottomNavigationBarIndex = 2;
-        currentScreen = const SpeakerScreen();
+        currentScreen = const ResourcesScreen();
         break;
       case 3:
         bottomNavigationBarIndex = 3;
@@ -41,7 +41,7 @@ class _TabsState extends State<Tabs> {
         break;
       case 4:
         bottomNavigationBarIndex = 4;
-        currentScreen = const ContactusScreen();
+        currentScreen = const FAQScreen();
         break;
 
       default:
@@ -56,7 +56,7 @@ class _TabsState extends State<Tabs> {
       appBar: AppBar(
         centerTitle: true,
         title: Image.asset(
-          height: 30,
+          height: 25,
           width: 100,
           fit: BoxFit.contain,
           'lib/assets/gdg_logo.png',
@@ -74,11 +74,11 @@ class _TabsState extends State<Tabs> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
-            label: "Schedule",
+            label: "Events",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),
-            label: "Spekers",
+            label: "Resources",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_add),
@@ -86,7 +86,7 @@ class _TabsState extends State<Tabs> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.contact_support_outlined),
-            label: "Crontact us",
+            label: "FAQ",
           ),
         ],
       ),

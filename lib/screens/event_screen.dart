@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScheduleScreen extends StatelessWidget {
-  const ScheduleScreen({super.key});
+class EventScreen extends StatelessWidget {
+  const EventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Schedule Screen'),
+        child: Text('Event Screen'),
       ),
     );
   }
