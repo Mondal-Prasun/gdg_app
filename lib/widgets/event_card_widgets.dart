@@ -10,7 +10,7 @@ class EventCardWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
       height: 100,
       width: 100,
       decoration: BoxDecoration(
@@ -36,6 +36,7 @@ class EventCardWidgets extends StatelessWidget {
               onPressed: () {},
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
+                backgroundColor: Colors.red,
               ),
               child: const Text("Join Us"),
             ),

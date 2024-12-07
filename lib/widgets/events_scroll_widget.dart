@@ -10,6 +10,8 @@ class EventsScrollWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         Padding(
@@ -29,7 +31,7 @@ class EventsScrollWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 200,
+          height: size.height / 5,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: events.length,
