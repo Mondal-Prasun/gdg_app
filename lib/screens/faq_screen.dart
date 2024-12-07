@@ -25,81 +25,122 @@ class _FAQScreenState extends ConsumerState<FAQScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: ListView(
+        child: Stack(
           children: [
-            const Text(
-              'FREQUENTLY ASKED QUESTIONS',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                decorationThickness: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: Text(
-                'Here are the answers to some most frequently asked questions.',
-                textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: size.height / 14,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Icon(Icons.search),
-                      ),
-                      Expanded(
-                        child: Form(
-                          key: _searchBoxKey,
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Search using keyword",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "You have to enter some word";
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                allQuestions = ref
-                                    .read(questionProvider.notifier)
-                                    .getSearchedQuestion(value);
-                              });
-                            },
-                            keyboardType: TextInputType.url,
-                          ),
-                        ),
-                      ),
-                    ],
+            ListView(
+              children: [
+                const Text(
+                  'FREQUENTLY ASKED QUESTIONS',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    decorationThickness: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  child: Text(
+                    'Here are the answers to some most frequently asked questions.',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: size.height / 14,
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Icon(Icons.search),
+                          ),
+                          Expanded(
+                            child: Form(
+                              key: _searchBoxKey,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Search using keyword",
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "You have to enter some word";
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  setState(() {
+                                    allQuestions = ref
+                                        .read(questionProvider.notifier)
+                                        .getSearchedQuestion(value);
+                                  });
+                                },
+                                keyboardType: TextInputType.url,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                ///Also change this as per the api structure requirements
+                for (final faq in allQuestions)
+                  FaqWidgets(
+                      question: faq["question"]!, answer: faq["answer"]!),
+
+                const SizedBox(
+                  width: double.infinity,
+                  height: 160,
+                )
+              ],
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 150,
+                alignment: Alignment.center,
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text(
+                      'Still Stuck? Help us a mail away',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                        fixedSize: Size(size.width, 45),
+                      ),
+                      onPressed: () {},
+                      child: const Text("Submit Your Question"),
+                    ),
+                  ],
+                ),
               ),
             ),
-
-            ///Also change this as per the api structure requirements
-            for (final faq in allQuestions)
-              FaqWidgets(question: faq["question"]!, answer: faq["answer"]!),
           ],
         ),
       ),
