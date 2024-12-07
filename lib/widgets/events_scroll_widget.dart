@@ -29,8 +29,7 @@ class EventsScrollWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          // height: 200,
-          width: double.infinity,
+          height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: events.length,

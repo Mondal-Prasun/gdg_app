@@ -17,32 +17,30 @@ class EventCardWidgets extends StatelessWidget {
         color: Colors.blue,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Expanded(
-        child: Stack(
-          // fit: StackFit.loose,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                fit: BoxFit.cover,
-                events[index].eventImagePath,
-                height: double.infinity,
-              ),
+      child: Stack(
+        // fit: StackFit.loose,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              fit: BoxFit.cover,
+              events[index].eventImagePath,
+              height: double.infinity,
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text("Join Us"),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.white,
               ),
-            )
-          ],
-        ),
+              child: const Text("Join Us"),
+            ),
+          )
+        ],
       ),
     );
   }
